@@ -1,10 +1,42 @@
-import "./App.css";
+import { useEffect, useState } from 'react';
+import './App.css';
+
+type BackendStatus = 'checking' | 'ok' | 'offline';
 
 function App() {
+  const [backendStatus, setBackendStatus] =
+    useState<BackendStatus>('checking');
+
+  useEffect(() => {
+    async function checkBackendHealth() {
+      try {
+        const response = await fetch('http://localhost:8000/health');
+
+        if (!response.ok) {
+          setBackendStatus('offline');
+          return;
+        }
+
+        const data = (await response.json()) as { status?: string };
+        setBackendStatus(data.status === 'ok' ? 'ok' : 'offline');
+      } catch {
+        setBackendStatus('offline');
+      }
+    }
+
+    void checkBackendHealth();
+  }, []);
+
   return (
     <main className="app-shell">
       <section className="hero">
-        <p className="eyebrow">Local forensic workflow</p>
+        <div className="top-row">
+          <p className="eyebrow">Local forensic workflow</p>
+          <div className={`status-pill status-${backendStatus}`}>
+            Backend: {backendStatus}
+          </div>
+        </div>
+
         <h1>AI Image Forensics Lab</h1>
         <p className="hero-text">
           Compare real and AI-generated images, collect forensic clues, and

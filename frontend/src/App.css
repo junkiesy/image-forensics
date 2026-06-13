@@ -16,6 +16,35 @@
   margin-bottom: 48px;
 }
 
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.status-pill {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.status-checking {
+  color: #fde68a;
+}
+
+.status-ok {
+  color: #86efac;
+}
+
+.status-offline {
+  color: #fca5a5;
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: #7dd3fc;
