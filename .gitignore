@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.pytest_cache/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+
+# Datasets
+datasets/real/*
+datasets/ai/*
+!datasets/real/.gitkeep
+!datasets/ai/.gitkeep
+
+# Trained models
+models/*
+!models/README.md
+
+# Experiment outputs
+experiments/outputs/
+experiments/runs/
+
+# OS files
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
